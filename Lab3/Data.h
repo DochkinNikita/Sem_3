@@ -12,13 +12,9 @@ public:
 };
 
 class datetime{
-
 private:
-
     Data data;
-
 public:
-
     datetime() {
         data.second = 0;
         data.minute = 0;
@@ -29,8 +25,6 @@ public:
     }
 
     ~datetime() {};
-
-
     void showInfo();
     void addData(Data new_data);
     void showSysDate();
@@ -47,19 +41,18 @@ public:
 
 class List{
 public:
-
     Node* first;
     Node* last;
     Node* C;
-
-    List(){
+    List()
+    {
         first = NULL;
         last = NULL;
         C = NULL;
     };
 
-    ~List() {
-    
+    ~List() 
+    {    
         deleteAll();
 
     };
