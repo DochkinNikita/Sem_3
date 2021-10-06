@@ -23,46 +23,33 @@ void datetime::showSysDate() {
     struct tm  tstruct;
     char       buf[80];
     tstruct = *localtime(&now);
-    
     strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
-
     cout << "System date: " << buf << endl;
 }
 
-void datetime::addData(Data new_data) {
-
+void datetime::addData(Data new_data) 
+{
     data = new_data;
-
 }
 
 void List::getListFromFile(char* fileName) {
     
     int i = 0;
-
     fileWork file;
-
     file.countData(fileName, i);
-
     Data* new_data = new Data[i];
-
     file.getData(fileName, i, new_data);
-
     for (int j = 0; j < i; j++) {
         addNode(new_data[j]);
     }
-
     delete [] new_data;
-
 }
 
 void fileWork::getData(char* fileName, int& i, Data*& data_new) {
     ifstream fin(fileName);
-
     if (fin) {
         Data new_data;
-
         int j = 0;
-
         while (fin >> new_data.hour >> new_data.minute >> new_data.second >> new_data.day >> new_data.month >> new_data.year) {
             data_new[j] = new_data;
             j++;
